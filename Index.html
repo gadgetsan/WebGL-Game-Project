@@ -1,0 +1,353 @@
+
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <!-- bootstrap 3.0.2 -->
+        <link rel='stylesheet' type='text/css' href='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/AdminLTE-master/css/bootstrap.min.css'></link>
+        <link rel='stylesheet' type='text/css' href='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/data/CSS/tables.css'></link>
+        <!-- font Awesome -->
+        <link rel='stylesheet' type='text/css' href='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/AdminLTE-master/css/font-awesome.min.css'></link>
+        <!-- Ionicons -->
+        <link rel='stylesheet' type='text/css' href='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/AdminLTE-master/css/ionicons.min.css'></link>
+        <!-- Theme style -->
+        <link rel='stylesheet' type='text/css' href='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/AdminLTE-master/css/AdminLTE.css'></link>
+        <!-- Bubbles comments -->
+        <link rel='stylesheet' type='text/css' href='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/data/CSS/bubbles.css'></link>
+
+        <!-- jQuery 2.0.2 -->
+        <script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/jquery/jquery-1.11.0.min.js'></script>
+        <!-- jQuery UI-->
+        <script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/jqueryui/jquery-ui.min.js'></script>
+        <!-- Bootstrap -->
+        <script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/AdminLTE-master/js/bootstrap.min.js'></script>
+        <!-- AdminLTE App -->
+        <script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/AdminLTE-master/js/AdminLTE/app.js' media='print'></script>
+        <!-- PRINT -->
+        <link rel='stylesheet' type='text/css' href='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/data/CSS/print.css' media='print'></link>
+
+        <link rel='stylesheet' type='text/css' href='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/bootstrap/CSS/bootstrap-datetimepicker.min.css' media='screen'></link>
+
+
+        <!--COMPONENTS-->
+        <script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/bootstrap/JS/bootstrap-datetimepicker.min.js'></script>
+        <script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/bootstrap/JS/locales/bootstrap-datetimepicker.fr.js'></script>
+        
+        <link rel='stylesheet' type='text/css' href='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/fuelux/CSS/fuelux.css' media='screen'></link>
+        <script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/fuelux/JS/fuelux.min.js'></script>
+
+
+<!--<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBWjnnKE9mGd9vpbUETGLCsPQZ_feRP9PQ&v=3.exp&libraries=places&language=fr'></script>-->
+    </head>
+    <body class="skin-blue">
+        <div class="print-only">
+            <img src="https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/data/Images/CSH_transparent.png">
+        </div>
+        <!-- header logo: style can be found in header.less -->
+        <header class="header">
+            <a  href="https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/Index/Index" class="logo no-print" style="font-size: 27px">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                Intranet
+                <img style='width: 50%; padding-bottom: 3px;'src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/data/Images/logo-blanc-CSH.png'>            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->        
+                        
+<li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-user"></i>
+            <span>Stephane Beaudet <i class="caret"></i></span>
+        </a>
+        <ul class="dropdown-menu"> 
+            <li class="user-header bg-light-blue">
+                <!-- User image -->
+                <img src="https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/AdminLTE-master/img/avatar5.png" class="img-circle" alt="User Image" />
+                <p>
+                    Stephane Beaudet                    <small>Utilisateur</small>
+                </p>
+            </li>
+            <!-- Menu Body -->
+            <!--
+            <li class="user-body">
+                <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                </div>
+                <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                </div>
+                <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                </div>
+            </li>
+            -->
+            <!-- Menu Footer-->
+            <li class="user-footer">
+                <!--
+                <div class="pull-left">
+                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                -->
+                <div class="pull-left">
+                    
+
+    <a class='btn btn-sm  btn-default' id='MyProfileunique' href='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/Profile/Index'>Mon Profil</a>
+     
+                </div>
+                <div class="pull-right">
+                    
+
+    <a class='btn btn-sm  btn-default' id='Disconnectunique' href='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/Connect/Disconnect'>Se Déconnecter</a>
+     
+                </div>
+            </li>
+        </ul>
+      
+</li>                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas">                
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                     
+                    <div class="user-panel" >
+    
+            <div class="pull-left image">
+            <img src="https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/AdminLTE-master/img/avatar5.png" class="img-circle no-print" alt="User Image" />
+        </div>
+        <div class="pull-left info">
+            <p class='no-print'>Bonjour, Stephane</p>
+        </div>
+      
+</div>                    <!-- search form -->
+                    
+                    <!--
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                            <span class="input-group-btn">
+                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                    -->
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        
+<!-- HINT: Set the class of any menu link below to "active" to make it appear active -->
+            
+<li class="no-print">
+    <a href="https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/Recommandation/Index">
+        <i class="fa fa-thumbs-o-up"></i> <span>Recommandations </span>
+    </a>
+</li>
+                    
+<li class="no-print">
+    <a href="https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/NewCustomReport/Index">
+        <i class="fa fa-bar-chart-o"></i> <span>Rapports Sur Mesure </span>
+    </a>
+</li>
+                    
+<li class="no-print">
+    <a href="https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/TransportRequest/Index">
+        <i class="fa fa-bus"></i> <span>Demandes de transport </span>
+    </a>
+</li>
+                    
+<li class="no-print">
+    <a href="https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/Person/Index">
+        <i class="fa fa-sitemap"></i> <span>Configuration </span>
+    </a>
+</li>
+                    
+<li class="no-print">
+    <a href="https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/CleaningReport/Index">
+        <i class="fa fa-paint-brush"></i> <span>Rapport de Nettoyage </span>
+    </a>
+</li>
+                    
+<li class="no-print">
+    <a href="https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/InvestmentInspection/Index">
+        <i class="fa  fa-usd"></i> <span>Inspection Investissements </span>
+    </a>
+</li>
+                    
+<li class="no-print">
+    <a href="https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/Lock/Index">
+        <i class="fa fa-lock"></i> <span>Gestion des Cadenas </span>
+    </a>
+</li>
+                  </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">                
+                <!-- Content Header (Page header) -->
+                <section class="content-header">        
+                    <title>Test - Page Test!</title>
+<h1 class="no-print">
+    <!--<a href="" type="button" class="btn btn-default btn-sm" style="display: inline-block;"><i class="fa fa-arrow-left"></i></a>-->
+    Test    <small  class="no-print">
+        Page Test!    </small>
+    <!--<a class="btn btn-info btn-sm" style="display: inline-block; float: right;" onclick="window.open('https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/Help/Index/Testing-Test','windowNew','width=700, height=600');return false;" href="https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/Help/Index/Testing-Test" >Besoin d'aide?</a>-->
+</h1>                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/App/components/async/lib/async.js'></script>
+
+
+<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/webgl/glMatrix-0.9.5.min.js'></script>
+<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/webgl/webgl-utils.js'></script>
+<!--<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js'>-->
+
+<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/App/webgl/Helper.js'></script>
+
+<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/App/webgl/Engine.js'></script>
+<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/App/webgl/Loader.js'></script>
+<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/App/webgl/Camera.js'></script>
+<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/App/webgl/Time.js'></script>
+<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/App/webgl/Shaders.js'></script>
+
+<script id="shader-fs" type="x-shader/x-fragment">
+    precision mediump float;
+
+    varying vec2 vTextureCoord;
+
+    uniform sampler2D uSampler;
+
+    void main(void) {
+        gl_FragColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
+    }
+</script>
+
+<script id="shader-vs" type="x-shader/x-vertex">
+    attribute vec3 aVertexPosition;
+    attribute vec2 aTextureCoord;
+
+    uniform mat4 uMVMatrix;
+    uniform mat4 uPMatrix;
+
+    varying vec2 vTextureCoord;
+
+
+    void main(void) {
+        gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+        vTextureCoord = aTextureCoord;
+    }
+</script>
+
+
+
+<script type="text/javascript">
+
+	var folder = './webgl/'
+
+    var planet;
+
+	function tick(){
+    	requestAnimFrame(tick);
+
+		Time.CalculateDelta();
+
+		Camera.Init();
+
+        planet.Draw();
+
+        planet.Animate(Time.Elapsed);
+	}
+
+
+    function webGLStart() {
+        var canvas = document.getElementById("my-canvas");
+        Engine.initGL(canvas);
+
+        Shaders.Load(["Shaders/Texture_vert", "Shaders/Texture_frag"], function(){
+            Loader.MultiLoad(["Objects/Planet"], function(){
+                Shaders.Use(["Texture_vert", "Texture_frag"])
+                planet = new Objects.Planet();
+                tick();
+
+            })
+        });
+
+    }
+
+
+</script>
+
+
+</head>
+
+
+<body onload="webGLStart();">
+    <canvas id="my-canvas" style="border: none;" width="100" height="100"></canvas>
+</body>
+
+</html>
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+        </div><!-- ./wrapper -->
+
+                
+        <div class="copyright no-print" style="background: #367fa9; text-align: center; width: 100%; color: #fff; height: 50px; font-size: large ">
+            Intranet V.1.2 | © 2015 - Comission Scolaire Harricana 
+        </div>
+    </body>
+</html>     
+    
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
+    });
+	$('.form_date').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+	$('.form_time').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 1,
+		minView: 0,
+		maxView: 1,
+		forceParse: 0
+    });
+</script>
