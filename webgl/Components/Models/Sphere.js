@@ -15,8 +15,7 @@ Loader.MultiLoad(["Models/TexturedComponent"], function(){
       this.Parent = other;
       if(this.Parent.Location == null){
         this.Parent.Location = [0,0,0];
-      }
-      
+      }      
       
       this.Init();
 

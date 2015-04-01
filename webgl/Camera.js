@@ -2,7 +2,7 @@
 var Camera = new Gdgt_Camera();
 
 function Gdgt_Camera(){
-    this.Location = [0.0, 0.0, 100.0];
+    this.Location = [0.0, 0.0, 5.0];
     this.fov = 45;
     this.RotationVector = [-1,0,0];
     this.RotationAngle = Math.PI/4;

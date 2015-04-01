@@ -280,15 +280,13 @@
 
 		Camera.Draw();
 
-        //element.Model.Draw();
+        element.Draw();
         //planet.Draw();
 
         //element.Animate(Time.Elapsed);
         //planet.Animate(Time.Elapsed);
         
-        Physics.Update(Time.Elapsed);
-
-        
+        Physics.Update(Time.Elapsed);        
         
         document.getElementById("X").innerHTML = Camera.Location[0];
         document.getElementById("Y").innerHTML = Camera.Location[1];
@@ -302,7 +300,7 @@
         Camera.Init();
 
         Shaders.Load(["Shaders/Lit_vert", "Shaders/Lit_frag"], function(){
-            Loader.MultiLoad(["Objects/ProceduralBuilding", "Objects/Planet", "Objects/TestEnvironment"], function(){
+            Loader.MultiLoad([/*"Objects/ProceduralBuilding", "Objects/Planet", */"Objects/TestEnvironment"], function(){
                 Shaders.Use(["Lit_vert", "Lit_frag"]);
                 element = new Objects.TestEnvironment();
                 //planet = new Objects.Planet();

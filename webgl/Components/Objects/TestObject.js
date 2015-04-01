@@ -4,7 +4,11 @@ Loader.MultiLoad(["Characteristics/PhysicalObject", "Models/Sphere"], function()
         this.Location = [0,0,0];
         this.Model = new Models.Sphere(this);
         
-        Characteristics.PhysicalObject(this);
+        new Characteristics.PhysicalObject(this);
+
+        this.Draw = function(){
+            this.Model.Draw();
+        }
     }
 
     Objects.TestObject = TestObject;
