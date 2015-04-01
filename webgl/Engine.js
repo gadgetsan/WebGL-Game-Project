@@ -57,4 +57,9 @@ Gdgt_Engine.prototype.RotateDeg = function(deg, vector) {
     mat4.rotate(this.mvMatrix, Engine.degToRad(deg), vector);
 }
 
+Gdgt_Engine.prototype.Rotate = function(deg, vector) {
+    if(vector == null){vector = [0,1,0]}
+    mat4.rotate(this.mvMatrix, deg, vector);
+}
+
 

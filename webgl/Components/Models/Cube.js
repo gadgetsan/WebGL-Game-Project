@@ -1,142 +1,155 @@
-
-Cube.inheritsFrom( TexturedComponent );
-function Cube(){
-	//un component peut avoir une liste de component enfant
-    this.Location = [0.0, 0.0, -7.0];
-    this.drawingType = GL.TRIANGLES;
-
-}
-
-//on doit initialiser la geometrie de l'objet en créant un objet dans le GPU
-Cube.prototype.Init = function(){
-
-    //emplacement de chaque vertex
-	this._VertexPositionBuffer = GL.createBuffer();
-    GL.bindBuffer(GL.ARRAY_BUFFER, this._VertexPositionBuffer);
-
-    vertices = [
-      // Front face
-      -1.0, -1.0,  1.0,
-       1.0, -1.0,  1.0,
-       1.0,  1.0,  1.0,
-      -1.0,  1.0,  1.0,
-
-      // Back face
-      -1.0, -1.0, -1.0,
-      -1.0,  1.0, -1.0,
-       1.0,  1.0, -1.0,
-       1.0, -1.0, -1.0,
-
-      // Top face
-      -1.0,  1.0, -1.0,
-      -1.0,  1.0,  1.0,
-       1.0,  1.0,  1.0,
-       1.0,  1.0, -1.0,
-
-      // Bottom face
-      -1.0, -1.0, -1.0,
-       1.0, -1.0, -1.0,
-       1.0, -1.0,  1.0,
-      -1.0, -1.0,  1.0,
-
-      // Right face
-       1.0, -1.0, -1.0,
-       1.0,  1.0, -1.0,
-       1.0,  1.0,  1.0,
-       1.0, -1.0,  1.0,
-
-      // Left face
-      -1.0, -1.0, -1.0,
-      -1.0, -1.0,  1.0,
-      -1.0,  1.0,  1.0,
-      -1.0,  1.0, -1.0,
-    ];
-
-    GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(vertices), GL.STATIC_DRAW);
-    this._VertexPositionBuffer.itemSize = 3;
-    this._VertexPositionBuffer.numItems = 24;
-
-    //couleur de chaque Vertex
-    this._vertexColorBuffer =  GL.createBuffer();
-    GL.bindBuffer(GL.ARRAY_BUFFER, this._vertexColorBuffer);    
-
-    colors = [
-      [1.0, 0.0, 0.0, 1.0],     // Front face
-      [1.0, 1.0, 0.0, 1.0],     // Back face
-      [0.0, 1.0, 0.0, 1.0],     // Top face
-      [1.0, 0.5, 0.5, 1.0],     // Bottom face
-      [1.0, 0.0, 1.0, 1.0],     // Right face
-      [0.0, 0.0, 1.0, 1.0],     // Left face
-    ];
-    var unpackedColors = [];
-    for (var i in colors) {
-      var color = colors[i];
-      for (var j=0; j < 4; j++) {
-        unpackedColors = unpackedColors.concat(color);
-      }
+Loader.MultiLoad(["Models/TexturedComponent"], function(){
+    Cube.inheritsFrom( Models.TexturedComponent );
+    function Cube(){
+    	//un component peut avoir une liste de component enfant
+        this.Location = [0.0, 0.0, -7.0];
+        this.drawingType = GL.TRIANGLES;
     }
-    GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(unpackedColors), GL.STATIC_DRAW);
-    this._vertexColorBuffer.itemSize = 4;
-    this._vertexColorBuffer.numItems = 24;
+    
+    //on doit initialiser la geometrie de l'objet en créant un objet dans le GPU
+    Cube.prototype.Init = function(){
+	    
+        //emplacement des vertexes
+        var vertices = [
+          // Front face
+          -1.0, -1.0,  1.0,
+           1.0, -1.0,  1.0,
+           1.0,  1.0,  1.0,
+          -1.0,  1.0,  1.0,
+    
+          // Back face
+          -1.0, -1.0, -1.0,
+          -1.0,  1.0, -1.0,
+           1.0,  1.0, -1.0,
+           1.0, -1.0, -1.0,
+    
+          // Top face
+          -1.0,  1.0, -1.0,
+          -1.0,  1.0,  1.0,
+           1.0,  1.0,  1.0,
+           1.0,  1.0, -1.0,
+    
+          // Bottom face
+          -1.0, -1.0, -1.0,
+           1.0, -1.0, -1.0,
+           1.0, -1.0,  1.0,
+          -1.0, -1.0,  1.0,
+    
+          // Right face
+           1.0, -1.0, -1.0,
+           1.0,  1.0, -1.0,
+           1.0,  1.0,  1.0,
+           1.0, -1.0,  1.0,
+    
+          // Left face
+          -1.0, -1.0, -1.0,
+          -1.0, -1.0,  1.0,
+          -1.0,  1.0,  1.0,
+          -1.0,  1.0, -1.0,
+        ];
+        
+        //Normals
+        var normalData = [
+            0.0, 0.0, 1.0,
+            0.0, 0.0, 1.0,
+            0.0, 0.0, 1.0,
+            0.0, 0.0, 1.0,
+            0.0, 0.0, -1.0,
+            0.0, 0.0, -1.0,
+            0.0, 0.0, -1.0,
+            0.0, 0.0, -1.0,
+            0.0, 1.0, 0.0,
+            0.0, 1.0, 0.0,
+            0.0, 1.0, 0.0,
+            0.0, 1.0, 0.0,
+            0.0, -1.0, 0.0,
+            0.0, -1.0, 0.0,
+            0.0, -1.0, 0.0,
+            0.0, -1.0, 0.0,
+            1.0, 0.0, 0.0,
+            1.0, 0.0, 0.0,
+            1.0, 0.0, 0.0,
+            1.0, 0.0, 0.0,
+            -1.0, 0.0, 0.0,
+            -1.0, 0.0, 0.0,
+            -1.0, 0.0, 0.0,
+            -1.0, 0.0, 0.0,
+            ];
+    
+        //Index
+        var indices = [
+          0, 1, 2,      0, 2, 3,    // Front face
+          4, 5, 6,      4, 6, 7,    // Back face
+          8, 9, 10,     8, 10, 11,  // Top face
+          12, 13, 14,   12, 14, 15, // Bottom face
+          16, 17, 18,   16, 18, 19, // Right face
+          20, 21, 22,   20, 22, 23  // Left face
+        ]
+    
+        //Texture Coords
+        var textureCoords = [
+          // Front face
+          0.0, 0.0,
+          1.0, 0.0,
+          1.0, 1.0,
+          0.0, 1.0,
+    
+          // Back face
+          1.0, 0.0,
+          1.0, 1.0,
+          0.0, 1.0,
+          0.0, 0.0,
+    
+          // Top face
+          0.0, 1.0,
+          0.0, 0.0,
+          1.0, 0.0,
+          1.0, 1.0,
+    
+          // Bottom face
+          1.0, 1.0,
+          0.0, 1.0,
+          0.0, 0.0,
+          1.0, 0.0,
+    
+          // Right face
+          1.0, 0.0,
+          1.0, 1.0,
+          0.0, 1.0,
+          0.0, 0.0,
+    
+          // Left face
+          0.0, 0.0,
+          1.0, 0.0,
+          1.0, 1.0,
+          0.0, 1.0,
+        ];
 
+        this._vertexNormalBuffer = GL.createBuffer();
+        GL.bindBuffer(GL.ARRAY_BUFFER, this._vertexNormalBuffer);
+        GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(normalData), GL.STATIC_DRAW);
+        this._vertexNormalBuffer.itemSize = 3;
+        this._vertexNormalBuffer.numItems = normalData.length / 3;
 
-    //Index Buffer
-    this._vertexIndexBuffer = GL.createBuffer();
-    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, this._vertexIndexBuffer);
-    var indices = [
-      0, 1, 2,      0, 2, 3,    // Front face
-      4, 5, 6,      4, 6, 7,    // Back face
-      8, 9, 10,     8, 10, 11,  // Top face
-      12, 13, 14,   12, 14, 15, // Bottom face
-      16, 17, 18,   16, 18, 19, // Right face
-      20, 21, 22,   20, 22, 23  // Left face
-    ]
-    GL.bufferData(GL.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), GL.STATIC_DRAW);
-    this._vertexIndexBuffer.itemSize = 1;
-    this._vertexIndexBuffer.numItems = 36;
+        this._texCoordBuffer = GL.createBuffer();
+        GL.bindBuffer(GL.ARRAY_BUFFER, this._texCoordBuffer);
+        GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(textureCoords), GL.STATIC_DRAW);
+        this._texCoordBuffer.itemSize = 2;
+        this._texCoordBuffer.numItems = textureCoords.length / 2;
 
-    //Texture Coord Buffer
-    this._texCordBuffer = GL.createBuffer();
-    GL.bindBuffer(GL.ARRAY_BUFFER, this._texCordBuffer);
-    var textureCoords = [
-      // Front face
-      0.0, 0.0,
-      1.0, 0.0,
-      1.0, 1.0,
-      0.0, 1.0,
+        this._vertexPositionBuffer = GL.createBuffer();
+        GL.bindBuffer(GL.ARRAY_BUFFER, this._vertexPositionBuffer);
+        GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(vertices), GL.STATIC_DRAW);
+        this._vertexPositionBuffer.itemSize = 3;
+        this._vertexPositionBuffer.numItems = vertices.length / 3;
 
-      // Back face
-      1.0, 0.0,
-      1.0, 1.0,
-      0.0, 1.0,
-      0.0, 0.0,
+        this._vertexIndexBuffer = GL.createBuffer();
+        GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, this._vertexIndexBuffer);
+        GL.bufferData(GL.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), GL.STATIC_DRAW);
+        this._vertexIndexBuffer.itemSize = 1;
+        this._vertexIndexBuffer.numItems = indices.length;
+    }
 
-      // Top face
-      0.0, 1.0,
-      0.0, 0.0,
-      1.0, 0.0,
-      1.0, 1.0,
-
-      // Bottom face
-      1.0, 1.0,
-      0.0, 1.0,
-      0.0, 0.0,
-      1.0, 0.0,
-
-      // Right face
-      1.0, 0.0,
-      1.0, 1.0,
-      0.0, 1.0,
-      0.0, 0.0,
-
-      // Left face
-      0.0, 0.0,
-      1.0, 0.0,
-      1.0, 1.0,
-      0.0, 1.0,
-    ];
-    GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(textureCoords), GL.STATIC_DRAW);
-    this._texCordBuffer.itemSize = 2;
-    this._texCordBuffer.numItems = 24;
-
-}
+  Models.Cube = Cube;
+  Loader.Loaded("Models/Cube");
+});

@@ -219,17 +219,21 @@
 <script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/App/components/async/lib/async.js'></script>
 
 
-<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/webgl/glMatrix-0.9.5.min.js'></script>
-<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/external/webgl/webgl-utils.js'></script>
+<script type='text/javascript' src='external/glMatrix-0.9.5.min.js'></script>
+<script type='text/javascript' src='external/webgl-utils.js'></script>
+<script type='text/javascript' src='external/perlin.js'></script>
 <!--<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js'>-->
 
-<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/App/webgl/Helper.js'></script>
+<script type='text/javascript' src='webgl/Helper.js'></script>
 
-<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/App/webgl/Engine.js'></script>
-<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/App/webgl/Loader.js'></script>
-<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/App/webgl/Camera.js'></script>
-<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/App/webgl/Time.js'></script>
-<script type='text/javascript' src='https://intranet.csharricana.qc.ca/app_web2/Intranet-Framework-build/App/webgl/Shaders.js'></script>
+<script type='text/javascript' src='webgl/Engine.js'></script>
+<script type='text/javascript' src='webgl/Loader.js'></script>
+<script type='text/javascript' src='webgl/Camera.js'></script>
+<script type='text/javascript' src='webgl/Time.js'></script>
+<script type='text/javascript' src='webgl/Shaders.js'></script>
+<script type='text/javascript' src='webgl/Keyboard.js'></script>
+<script type='text/javascript' src='webgl/Mouse.js'></script>
+<script type='text/javascript' src='webgl/Physics.js'></script>
 
 <script id="shader-fs" type="x-shader/x-fragment">
     precision mediump float;
@@ -265,29 +269,45 @@
 
 	var folder = './webgl/'
 
+    var element;
     var planet;
 
 	function tick(){
     	requestAnimFrame(tick);
 
 		Time.CalculateDelta();
+		Keyboard.HandleKeys();
 
-		Camera.Init();
+		Camera.Draw();
 
-        planet.Draw();
+        //element.Model.Draw();
+        //planet.Draw();
 
-        planet.Animate(Time.Elapsed);
+        //element.Animate(Time.Elapsed);
+        //planet.Animate(Time.Elapsed);
+        
+        Physics.Update(Time.Elapsed);
+
+        
+        
+        document.getElementById("X").innerHTML = Camera.Location[0];
+        document.getElementById("Y").innerHTML = Camera.Location[1];
+        document.getElementById("Z").innerHTML = Camera.Location[2];
 	}
 
 
     function webGLStart() {
         var canvas = document.getElementById("my-canvas");
         Engine.initGL(canvas);
+        Camera.Init();
 
-        Shaders.Load(["Shaders/Texture_vert", "Shaders/Texture_frag"], function(){
-            Loader.MultiLoad(["Objects/Planet"], function(){
-                Shaders.Use(["Texture_vert", "Texture_frag"])
-                planet = new Objects.Planet();
+        Shaders.Load(["Shaders/Lit_vert", "Shaders/Lit_frag"], function(){
+            Loader.MultiLoad(["Objects/ProceduralBuilding", "Objects/Planet", "Objects/TestEnvironment"], function(){
+                Shaders.Use(["Lit_vert", "Lit_frag"]);
+                element = new Objects.TestEnvironment();
+                //planet = new Objects.Planet();
+                //planet.Location = [0, 0, 0];
+                element.Location = [0, 0, 0];
                 tick();
 
             })
@@ -304,6 +324,9 @@
 
 <body onload="webGLStart();">
     <canvas id="my-canvas" style="border: none;" width="100" height="100"></canvas>
+    <p>X:<span id="X"></span></p>
+    <p>Y:<span id="Y"></span></p>
+    <p>Z:<span id="Z"></span></p>
 </body>
 
 </html>

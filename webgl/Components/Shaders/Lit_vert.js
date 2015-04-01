@@ -1,13 +1,14 @@
+//Un shader très simple sans texture (mais avec de la lumière)
 Loader.MultiLoad(["Shaders/Shader"], function(){
 
-	TexLit_vert.inheritsFrom( Shaders.Shader );
+	Lit_vert.inheritsFrom( Shaders.Shader );
 
-	function TexLit_vert(){
+	function Lit_vert(){
 		this._type = GL.VERTEX_SHADER;
 		this._source = "\
-		    attribute vec3 aVertexPosition;\
 		    attribute vec3 aVertexNormal;\
 		    attribute vec2 aTextureCoord;\
+		    attribute vec3 aVertexPosition;\
 \
 		    uniform mat4 uMVMatrix;\
 		    uniform mat4 uPMatrix;\
@@ -41,16 +42,16 @@ Loader.MultiLoad(["Shaders/Shader"], function(){
 
 	
 
-	TexLit_vert.prototype.AddVars = function(program){
-
-	    program.vertexPositionAttribute = GL.getAttribLocation(program, "aVertexPosition");
-	    GL.enableVertexAttribArray(program.vertexPositionAttribute);
-
+	Lit_vert.prototype.AddVars = function(program){
 	    program.textureCoordAttribute = GL.getAttribLocation(program, "aTextureCoord");
 	    GL.enableVertexAttribArray(program.textureCoordAttribute);
 
         program.vertexNormalAttribute = GL.getAttribLocation(program, "aVertexNormal");
         GL.enableVertexAttribArray(program.vertexNormalAttribute);
+
+	    program.vertexPositionAttribute = GL.getAttribLocation(program, "aVertexPosition");
+	    GL.enableVertexAttribArray(program.vertexPositionAttribute);
+
 
 	    program.pMatrixUniform = GL.getUniformLocation(program, "uPMatrix");
 	    program.mvMatrixUniform = GL.getUniformLocation(program, "uMVMatrix");
@@ -63,7 +64,7 @@ Loader.MultiLoad(["Shaders/Shader"], function(){
 
 	}
 
-  	Shaders.TexLit_vert = TexLit_vert;
-	Loader.Loaded("Shaders/TexLit_vert");
-	Shaders.Add("TexLit_vert", new TexLit_vert());
+  	Shaders.Lit_vert = Lit_vert;
+	Loader.Loaded("Shaders/Lit_vert");
+	Shaders.Add("Lit_vert", new Lit_vert());
 });

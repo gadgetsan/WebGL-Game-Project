@@ -4,7 +4,6 @@ function Component(){
 	this.Location = [-1.5, 0.0, -7.0];
 	this.Angle = 0;
 
-	this._VertexPositionBuffer;
 	this._vertexColorBuffer;
 
 	this.rotationVector = [1,1,1];
@@ -16,7 +15,6 @@ function Component(){
 //on affiche l'objet en utilisant le buffer dans le CPU (si présent)
 //on affiche aussi ses enfants
 Component.prototype.Draw = function(){
-
 
 	//on va déplacer la matrice avant d'afficher le component
 	Engine.MvMPush();
